@@ -1,0 +1,65 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CartRepository</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.model.persistence.repositories</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CartRepository (com.example.demo.model.persistence.repositories)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">CartRepository$MockitoMock$1876614902</td>
+  </tr>
+  <tr>
+    <td class="name">CartRepository$MockitoMock$1876614902$auxiliary$9Sef3kLv</td>
+  </tr>
+  <tr>
+    <td class="name">CartRepository$MockitoMock$1876614902$auxiliary$iqUB97Ol</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.model.persistence.repositories;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.model.persistence.Cart;
+<i>4</i>&nbsp;import com.example.demo.model.persistence.User;
+<i>5</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public interface CartRepository extends JpaRepository&lt;Cart, Long&gt; {
+<i>8</i>&nbsp;  Cart findByUser(User user);
+<i>9</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-29 17:52</div>
+</div>
+</body>
+</html>

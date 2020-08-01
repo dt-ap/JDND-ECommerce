@@ -1,0 +1,132 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserController (com.example.demo.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.exception.UserException;
+<i>4</i>&nbsp;import com.example.demo.service.UserService;
+<i>5</i>&nbsp;import org.apache.coyote.Response;
+<i>6</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>7</i>&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+<i>8</i>&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+<i>9</i>&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+<i>10</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>11</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>12</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import com.example.demo.model.persistence.Cart;
+<i>15</i>&nbsp;import com.example.demo.model.persistence.User;
+<i>16</i>&nbsp;import com.example.demo.model.requests.CreateUserRequest;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;@RestController
+<i>19</i>&nbsp;@RequestMapping(&quot;/api/user&quot;)
+<i>20</i>&nbsp;public class UserController {
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;	private final UserService service;
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;	public UserController(UserService service) {</b>
+<b class="fc"><i>25</i>&nbsp;		this.service = service;</b>
+<b class="fc"><i>26</i>&nbsp;	}</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;	@GetMapping(&quot;/id/{id}&quot;)
+<i>29</i>&nbsp;	public ResponseEntity&lt;User&gt; findById(@PathVariable Long id) {
+<b class="fc"><i>30</i>&nbsp;		return ResponseEntity.of(service.getById(id));</b>
+<i>31</i>&nbsp;	}
+<i>32</i>&nbsp;	
+<i>33</i>&nbsp;	@GetMapping(&quot;/{username}&quot;)
+<i>34</i>&nbsp;	public ResponseEntity&lt;User&gt; findByUserName(@PathVariable String username) {
+<b class="fc"><i>35</i>&nbsp;		return ResponseEntity.of(service.getByUsername(username));</b>
+<i>36</i>&nbsp;	}
+<i>37</i>&nbsp;	
+<i>38</i>&nbsp;	@PostMapping(&quot;/create&quot;)
+<i>39</i>&nbsp;	public ResponseEntity&lt;User&gt; createUser(@RequestBody CreateUserRequest createUserRequest) {
+<i>40</i>&nbsp;		try {
+<b class="fc"><i>41</i>&nbsp;			return ResponseEntity.ok(service.createUser(createUserRequest));</b>
+<b class="fc"><i>42</i>&nbsp;		} catch (UserException ex) {</b>
+<b class="fc"><i>43</i>&nbsp;			return ResponseEntity.badRequest().build();</b>
+<i>44</i>&nbsp;		}
+<i>45</i>&nbsp;	}
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;	
+<i>49</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-29 17:52</div>
+</div>
+</body>
+</html>

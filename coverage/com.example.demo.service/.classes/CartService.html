@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CartService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CartService (com.example.demo.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CartService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (42/ 42)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.exception.ItemException;
+<i>4</i>&nbsp;import com.example.demo.exception.UserException;
+<i>5</i>&nbsp;import com.example.demo.model.persistence.Cart;
+<i>6</i>&nbsp;import com.example.demo.model.persistence.repositories.CartRepository;
+<i>7</i>&nbsp;import com.example.demo.model.persistence.repositories.ItemRepository;
+<i>8</i>&nbsp;import com.example.demo.model.persistence.repositories.UserRepository;
+<i>9</i>&nbsp;import com.example.demo.model.requests.ModifyCartRequest;
+<i>10</i>&nbsp;import org.slf4j.Logger;
+<i>11</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>12</i>&nbsp;import org.springframework.stereotype.Service;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.util.stream.IntStream;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;@Service
+<i>17</i>&nbsp;public class CartService {
+<b class="fc"><i>18</i>&nbsp;  private static final Logger log = LoggerFactory.getLogger(CartService.class);</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;  private final CartRepository repository;
+<i>21</i>&nbsp;  private final ItemRepository itemRepository;
+<i>22</i>&nbsp;  private final UserRepository userRepository;
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;  public CartService(CartRepository repository, ItemRepository itemRepository, UserRepository userRepository) {</b>
+<b class="fc"><i>25</i>&nbsp;    this.repository = repository;</b>
+<b class="fc"><i>26</i>&nbsp;    this.itemRepository = itemRepository;</b>
+<b class="fc"><i>27</i>&nbsp;    this.userRepository = userRepository;</b>
+<b class="fc"><i>28</i>&nbsp;  }</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;  public Cart addToCart(ModifyCartRequest request) throws UserException, ItemException {
+<b class="fc"><i>31</i>&nbsp;    var username = request.getUsername();</b>
+<b class="fc"><i>32</i>&nbsp;    var user = userRepository.findByUsername(username);</b>
+<b class="fc"><i>33</i>&nbsp;    if (user.isEmpty()) {</b>
+<b class="fc"><i>34</i>&nbsp;      var notFound = &quot;Cannot find user &#39;&quot; + username + &quot;&#39;&quot;;</b>
+<b class="fc"><i>35</i>&nbsp;      log.debug(notFound);</b>
+<b class="fc"><i>36</i>&nbsp;      throw new UserException(notFound);</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;
+<b class="fc"><i>39</i>&nbsp;    var itemId = request.getItemId();</b>
+<b class="fc"><i>40</i>&nbsp;    var item = itemRepository.findById(itemId);</b>
+<b class="fc"><i>41</i>&nbsp;    if (item.isEmpty()) {</b>
+<b class="fc"><i>42</i>&nbsp;      var notFound = &quot;Cannot find item with id &#39;&quot; + itemId + &quot;&#39;&quot;;</b>
+<b class="fc"><i>43</i>&nbsp;      log.debug(notFound);</b>
+<b class="fc"><i>44</i>&nbsp;      throw new ItemException(notFound);</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;    var cart = user.get().getCart();</b>
+<b class="fc"><i>48</i>&nbsp;    IntStream.range(0, request.getQuantity())</b>
+<b class="fc"><i>49</i>&nbsp;        .forEach(i -&gt; cart.addItem(item.get()));</b>
+<b class="fc"><i>50</i>&nbsp;    repository.save(cart);</b>
+<b class="fc"><i>51</i>&nbsp;    log.info(&quot;Successfully added item(s) to &#39;{}&#39; cart&quot;, username);</b>
+<b class="fc"><i>52</i>&nbsp;    return cart;</b>
+<i>53</i>&nbsp;  }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;  public Cart removeFromCart(ModifyCartRequest request) throws UserException, ItemException {
+<b class="fc"><i>56</i>&nbsp;    var username = request.getUsername();</b>
+<b class="fc"><i>57</i>&nbsp;    var user = userRepository.findByUsername(username);</b>
+<b class="fc"><i>58</i>&nbsp;    if (user.isEmpty()) {</b>
+<b class="fc"><i>59</i>&nbsp;      var notFound = &quot;Cannot find user &#39;&quot; + username + &quot;&#39;&quot;;</b>
+<b class="fc"><i>60</i>&nbsp;      log.debug(notFound);</b>
+<b class="fc"><i>61</i>&nbsp;      throw new UserException(notFound);</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<b class="fc"><i>64</i>&nbsp;    var itemId = request.getItemId();</b>
+<b class="fc"><i>65</i>&nbsp;    var item = itemRepository.findById(itemId);</b>
+<b class="fc"><i>66</i>&nbsp;    if (item.isEmpty()) {</b>
+<b class="fc"><i>67</i>&nbsp;      var notFound = &quot;Cannot find item with id &#39;&quot; + itemId + &quot;&#39;&quot;;</b>
+<b class="fc"><i>68</i>&nbsp;      log.debug(notFound);</b>
+<b class="fc"><i>69</i>&nbsp;      throw new ItemException(notFound);</b>
+<i>70</i>&nbsp;    }
+<i>71</i>&nbsp;
+<b class="fc"><i>72</i>&nbsp;    var cart = user.get().getCart();</b>
+<b class="fc"><i>73</i>&nbsp;    IntStream.range(0, request.getQuantity())</b>
+<b class="fc"><i>74</i>&nbsp;        .forEach(i -&gt; cart.removeItem(item.get()));</b>
+<b class="fc"><i>75</i>&nbsp;    repository.save(cart);</b>
+<b class="fc"><i>76</i>&nbsp;    log.info(&quot;Successfully removed item(s) from &#39;{}&#39; cart&quot;, username);</b>
+<b class="fc"><i>77</i>&nbsp;    return cart;</b>
+<i>78</i>&nbsp;  }
+<i>79</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-29 17:52</div>
+</div>
+</body>
+</html>
