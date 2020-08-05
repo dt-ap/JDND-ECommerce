@@ -34,7 +34,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.cors().and().csrf().disable()
-        .authorizeRequests().antMatchers(HttpMethod.POST, Constants.CREATE_USER_URL).permitAll().anyRequest().authenticated()
+        .authorizeRequests().antMatchers(HttpMethod.POST, Constants.CREATE_USER_URL).permitAll()
+        .and().authorizeRequests().antMatchers(HttpMethod.GET, "/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/swagger-ui.html**", "/webjars/**", "favicon.ico").permitAll().anyRequest().authenticated()
         .and().addFilter(new JwtAuthenticationFilter(authenticationManager())).addFilter(new BasicJwtAuthenticationFilter(authenticationManager()))
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   }

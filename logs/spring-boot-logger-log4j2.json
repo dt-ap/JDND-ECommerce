@@ -1,0 +1,112 @@
+{
+  "instant" : {
+    "epochSecond" : 1596621650,
+    "nanoOfSecond" : 228771000
+  },
+  "thread" : "main",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.ECommerceApplication",
+  "message" : "Starting ECommerceApplication on dito-X550JX with PID 12859 (/home/dito/Documents/exercise/java-nanodegree/course-4__sec_devops/project__ecommerce/target/classes started by dito in /home/dito/Documents/exercise/java-nanodegree/course-4__sec_devops/project__ecommerce)",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.commons.logging.LogAdapter$Log4jLog",
+  "threadId" : 1,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621650,
+    "nanoOfSecond" : 302060000
+  },
+  "thread" : "main",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.ECommerceApplication",
+  "message" : "No active profile set, falling back to default profiles: default",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.commons.logging.LogAdapter$Log4jLog",
+  "threadId" : 1,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621654,
+    "nanoOfSecond" : 551064000
+  },
+  "thread" : "main",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.ECommerceApplication",
+  "message" : "Started ECommerceApplication in 4.785 seconds (JVM running for 5.537)",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.commons.logging.LogAdapter$Log4jLog",
+  "threadId" : 1,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621679,
+    "nanoOfSecond" : 302395000
+  },
+  "thread" : "http-nio-8080-exec-2",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.service.UserService",
+  "message" : "User 'user1' created",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.slf4j.Log4jLogger",
+  "threadId" : 210,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621687,
+    "nanoOfSecond" : 236723000
+  },
+  "thread" : "http-nio-8080-exec-3",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.service.UserService",
+  "message" : "User 'user2' created",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.slf4j.Log4jLogger",
+  "threadId" : 211,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621695,
+    "nanoOfSecond" : 105121000
+  },
+  "thread" : "http-nio-8080-exec-4",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.service.UserService",
+  "message" : "User 'user3' created",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.slf4j.Log4jLogger",
+  "threadId" : 212,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621701,
+    "nanoOfSecond" : 892774000
+  },
+  "thread" : "http-nio-8080-exec-5",
+  "level" : "INFO",
+  "loggerName" : "com.example.demo.service.UserService",
+  "message" : "User 'user4' created",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.slf4j.Log4jLogger",
+  "threadId" : 213,
+  "threadPriority" : 5
+}
+{
+  "instant" : {
+    "epochSecond" : 1596621712,
+    "nanoOfSecond" : 996139000
+  },
+  "thread" : "http-nio-8080-exec-6",
+  "level" : "ERROR",
+  "loggerName" : "com.example.demo.service.UserService",
+  "message" : "Invalid password. Failed to create user 'user8'",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.slf4j.Log4jLogger",
+  "threadId" : 214,
+  "threadPriority" : 5
+}
